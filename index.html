@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Поселенцы — ресторан уральской кухни, Челябинск</title>
+<meta name="description" content="Ресторан «Поселенцы»: авторская уральская кухня, своя пекарня, ляпуны из печи. Челябинск, пр. Ленина, 51.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--g9:#0f2418;--g8:#16301f;--g7:#1f3f2a;--lime:#c9d88a;--lime2:#e3ecb8;--ochre:#c8813e;--clay:#a8552f;--cream:#f6f1e6;--ink:#1c1a16;--mut:#6d6a60;--r:22px;--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Manrope,sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:"Cormorant Garamond",serif;font-weight:600;line-height:1.05}
+.script{font-family:Caveat,cursive;color:var(--lime)}
+.wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:99px;font-weight:600;font-size:15px;border:1.5px solid transparent;cursor:pointer;transition:transform .4s var(--ease),background .3s,color .3s,box-shadow .4s;position:relative;overflow:hidden;font-family:inherit}
+.btn:hover{transform:translateY(-3px)}
+.btn-lime{background:var(--lime);color:var(--g9)}.btn-lime:hover{box-shadow:0 12px 30px -8px rgba(201,216,138,.6)}
+.btn-line{border-color:rgba(255,255,255,.5);color:#fff}.btn-line:hover{background:#fff;color:var(--g9)}
+.btn-dark{background:var(--g8);color:#fff}
+.btn svg{width:18px;height:18px;transition:transform .4s var(--ease)}.btn:hover svg{transform:translateX(4px)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ochre);font-weight:700}
+.eyebrow:before,.eyebrow:after{content:"";width:28px;height:1px;background:currentColor}
+section{position:relative}
+.sec-head{text-align:center;margin-bottom:56px}
+.sec-head h2{font-size:clamp(40px,6vw,64px);margin-top:10px}
+/* preloader */
+#pre{position:fixed;inset:0;background:var(--g9);z-index:100;display:grid;place-items:center;transition:clip-path 1s var(--ease) .2s;clip-path:inset(0 0 0 0)}
+#pre.done{clip-path:inset(0 0 100% 0)}
+#pre .script{font-size:64px;opacity:0;animation:fadeUp 1s var(--ease) forwards}
+#pre .bar{width:160px;height:2px;background:rgba(255,255,255,.15);margin:16px auto 0;overflow:hidden}
+#pre .bar i{display:block;height:100%;background:var(--lime);animation:load 1.2s var(--ease) forwards;transform-origin:left;transform:scaleX(0)}
+@keyframes load{to{transform:scaleX(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+/* cursor glow */
+#glow{position:fixed;width:340px;height:340px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(201,216,138,.18),transparent 65%);transform:translate(-50%,-50%);transition:opacity .3s;mix-blend-mode:screen}
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,padding .4s,backdrop-filter .4s;padding:22px 0}
+header.solid{background:rgba(15,36,24,.85);backdrop-filter:blur(14px);padding:12px 0;box-shadow:0 10px 30px -15px rgba(0,0,0,.5)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{color:#fff;display:flex;flex-direction:column;line-height:1}
+.logo b{font-family:"Cormorant Garamond",serif;font-size:32px;font-weight:700;letter-spacing:.02em}
+.logo small{font-size:10px;letter-spacing:.3em;color:var(--lime);margin-top:4px}
+.links{display:flex;gap:30px}
+.links a{color:rgba(255,255,255,.85);font-size:15px;position:relative;padding:4px 0}
+.links a:after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:100%;background:var(--lime);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+.links a:hover:after,.links a.on:after{transform:scaleX(1);transform-origin:left}
+.burger{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer;position:relative}
+.burger i{position:absolute;left:8px;right:8px;height:2px;background:#fff;transition:.4s var(--ease)}
+.burger i:nth-child(1){top:13px}.burger i:nth-child(2){top:19px}.burger i:nth-child(3){top:25px}
+.open .burger i:nth-child(1){transform:translateY(6px) rotate(45deg)}.open .burger i:nth-child(2){opacity:0}.open .burger i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+/* hero */
+.hero{background:var(--g9);color:#fff;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:130px 0 90px}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 20% 30%,rgba(201,216,138,.08),transparent),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cg fill='none' stroke='%23c9d88a' stroke-opacity='.05'%3E%3Cpath d='M10 60 L30 40 L50 60 L70 40 L90 60 L110 40'/%3E%3Ccircle cx='60' cy='95' r='6'/%3E%3C/g%3E%3C/svg%3E")}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;position:relative}
+.hero .script{font-size:34px}
+.hero h1{font-size:clamp(46px,7vw,92px);margin:8px 0 22px}
+.hero h1 .script{font-size:1.1em;display:inline-block;font-weight:700}
+.line-mask{display:block;overflow:hidden}
+.line-mask>span{display:block;transform:translateY(110%);transition:transform 1.1s var(--ease)}
+.loaded .line-mask>span{transform:none}
+.loaded .line-mask:nth-child(2)>span{transition-delay:.12s}.loaded .line-mask:nth-child(3)>span{transition-delay:.24s}
+.hero p.lead{max-width:470px;color:rgba(255,255,255,.75);font-size:17px;margin-bottom:34px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.hero-meta{display:flex;gap:34px;margin-top:48px;flex-wrap:wrap}
+.hero-meta div b{font-family:"Cormorant Garamond",serif;font-size:40px;color:var(--lime);display:block;line-height:1}
+.hero-meta div span{font-size:13px;color:rgba(255,255,255,.6)}
+.fade{opacity:0;transform:translateY(24px);transition:1s var(--ease)}
+.loaded .fade{opacity:1;transform:none}
+.loaded .d1{transition-delay:.4s}.loaded .d2{transition-delay:.55s}.loaded .d3{transition-delay:.7s}
+.hero-art{position:relative;aspect-ratio:1;max-width:560px;justify-self:end;width:100%}
+.hero-art .blob{position:absolute;inset:6% -18% -6% 18%;background:var(--lime);border-radius:50%;opacity:.9;animation:morph 12s ease-in-out infinite}
+@keyframes morph{0%,100%{border-radius:58% 42% 50% 50%/50% 55% 45% 50%}50%{border-radius:42% 58% 45% 55%/55% 45% 55% 45%}}
+.plate{position:absolute;inset:4%;border-radius:50%;overflow:hidden;border:14px solid #1b1b1a;box-shadow:0 40px 80px -20px rgba(0,0,0,.7),inset 0 0 0 2px #333;transform:scale(.7) rotate(-30deg);opacity:0;transition:1.6s var(--ease) .3s}
+.loaded .plate{transform:none;opacity:1}
+.plate img{width:100%;height:100%;object-fit:cover;animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg) scale(1.05)}}
+.badge{position:absolute;background:#fff;color:var(--g9);border-radius:18px;padding:12px 16px;box-shadow:0 20px 40px -15px rgba(0,0,0,.5);display:flex;gap:10px;align-items:center;font-size:13px;animation:float 5s ease-in-out infinite}
+.badge b{font-size:20px;font-family:"Cormorant Garamond",serif}
+.badge.b1{left:-4%;bottom:14%}.badge.b2{right:-2%;top:8%;animation-delay:-2.5s}
+@keyframes float{50%{transform:translateY(-14px)}}
+.leaf{position:absolute;width:60px;opacity:.9;animation:float 6s ease-in-out infinite}
+.scroll-hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);width:26px;height:42px;border:1.5px solid rgba(255,255,255,.4);border-radius:20px}
+.scroll-hint:after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;background:var(--lime);border-radius:2px;animation:sh 1.8s infinite}
+@keyframes sh{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+/* marquee */
+.marquee{background:var(--lime);color:var(--g9);overflow:hidden;padding:18px 0;transform:rotate(-1.5deg);margin:-24px -10px 0;position:relative;z-index:3}
+.marquee-track{display:flex;gap:48px;width:max-content;animation:mq 30s linear infinite;font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:700;white-space:nowrap}
+.marquee-track span:nth-child(even){font-family:Caveat;color:var(--clay)}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* reveal */
+.rv{opacity:0;transform:translateY(50px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv-l{transform:translateX(-60px)}.rv-r{transform:translateX(60px)}.rv-s{transform:scale(.9)}
+/* features */
+.features{padding:110px 0 70px}
+.feat-grid{display:grid;grid-template-columns:repeat(5,1fr)}
+.feat{text-align:center;padding:10px 18px;border-right:1px solid #e3dccb}
+.feat:last-child{border:0}
+.feat .ic{width:72px;height:72px;margin:0 auto 16px;border-radius:50%;border:1.5px solid var(--g7);display:grid;place-items:center;color:var(--g7);transition:.5s var(--ease)}
+.feat:hover .ic{background:var(--g7);color:var(--lime);transform:rotate(-12deg) scale(1.08)}
+.feat .ic svg{width:30px;height:30px}
+.feat h3{font-family:Manrope;font-size:16px;font-weight:700;margin-bottom:6px}
+.feat p{font-size:13px;color:var(--mut)}
+/* about */
+.about{padding:60px 0 120px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.about-pics{position:relative;height:560px}
+.about-pics figure{position:absolute;border-radius:var(--r);overflow:hidden;box-shadow:0 30px 60px -25px rgba(0,0,0,.45)}
+.about-pics figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.about-pics figure:hover img{transform:scale(1.08)}
+.about-pics .p1{width:62%;height:78%;left:0;top:0}
+.about-pics .p2{width:50%;height:58%;right:0;bottom:0;border:8px solid var(--cream)}
+.stamp{position:absolute;right:6%;top:4%;width:130px;height:130px;animation:spin 20s linear infinite;z-index:2}
+.stamp text{font-size:11.5px;letter-spacing:3px;fill:var(--clay);font-weight:700}
+.about h2{font-size:clamp(38px,5vw,58px);margin:14px 0 22px}
+.about h2 em{font-family:Caveat;font-style:normal;color:var(--clay)}
+.about p{color:var(--mut);margin-bottom:16px;font-size:16.5px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 34px}
+.chips span{padding:8px 16px;border-radius:99px;background:#ebe4d2;font-size:13.5px;font-weight:600}
+/* signature */
+.sig{background:var(--g9);color:#fff;padding:120px 0;overflow:hidden}
+.sig .sec-head h2{color:#fff}
+.sig-row{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:90px}
+.sig-row:last-child{margin-bottom:0}
+.sig-row.rev .sig-img{order:2}
+.sig-img{position:relative;border-radius:200px 200px var(--r) var(--r);overflow:hidden;aspect-ratio:4/5;max-height:620px}
+.sig-img img{width:100%;height:120%;object-fit:cover;will-change:transform}
+.sig-num{font-family:"Cormorant Garamond",serif;font-size:120px;color:transparent;-webkit-text-stroke:1px rgba(201,216,138,.4);line-height:1}
+.sig h3{font-size:clamp(36px,4.5vw,54px);margin:6px 0 18px}
+.sig p{color:rgba(255,255,255,.7);max-width:440px;margin-bottom:26px}
+.price{font-family:"Cormorant Garamond",serif;font-size:42px;color:var(--lime)}
+/* menu */
+.menu{padding:120px 0}
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:46px}
+.tab{padding:11px 20px;border-radius:99px;border:1.5px solid #d9d1bd;background:transparent;font:600 14px Manrope;cursor:pointer;transition:.35s var(--ease)}
+.tab:hover{border-color:var(--g7)}
+.tab.on{background:var(--g8);color:var(--lime);border-color:var(--g8)}
+.menu-list{display:grid;grid-template-columns:1fr 1fr;gap:6px 60px;min-height:300px}
+.dish{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:20px 0;border-bottom:1px dashed #d4ccb6;opacity:0;transform:translateY(20px);animation:dIn .6s var(--ease) forwards}
+@keyframes dIn{to{opacity:1;transform:none}}
+.dish h4{font-size:17.5px;font-weight:700;transition:color .3s}
+.dish:hover h4{color:var(--clay)}
+.dish .pr{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:700;color:var(--g7);white-space:nowrap}
+.dish p{grid-column:1/-1;font-size:14px;color:var(--mut)}
+.menu-cta{text-align:center;margin-top:50px}
+/* gallery */
+.gallery{padding:0 0 120px}
+.g-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:240px;gap:16px}
+.g-grid figure{border-radius:var(--r);overflow:hidden;position:relative;cursor:zoom-in}
+.g-grid figure:nth-child(1){grid-row:span 2}.g-grid figure:nth-child(4){grid-row:span 2}
+.g-grid figure:nth-child(5){grid-column:span 2}
+.g-grid img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),filter .6s}
+.g-grid figure:after{content:"+";position:absolute;inset:0;display:grid;place-items:center;font-size:48px;color:#fff;background:rgba(15,36,24,.45);opacity:0;transition:.5s}
+.g-grid figure:hover img{transform:scale(1.1)}.g-grid figure:hover:after{opacity:1}
+#lb{position:fixed;inset:0;z-index:90;background:rgba(10,20,14,.92);display:grid;place-items:center;opacity:0;pointer-events:none;transition:.4s}
+#lb.on{opacity:1;pointer-events:auto}
+#lb img{max-width:90vw;max-height:86vh;border-radius:14px;transform:scale(.9);transition:.5s var(--ease)}
+#lb.on img{transform:none}
+/* reviews */
+.reviews{background:#ece5d3;padding:120px 0;overflow:hidden}
+.rating{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px}
+.rating b{font-family:"Cormorant Garamond",serif;font-size:56px;color:var(--g7)}
+.stars{color:var(--ochre);font-size:22px;letter-spacing:3px}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rev{background:var(--cream);border-radius:var(--r);padding:34px;position:relative;transition:transform .5s var(--ease),box-shadow .5s}
+.rev:hover{transform:translateY(-10px);box-shadow:0 30px 50px -25px rgba(0,0,0,.3)}
+.rev:before{content:"“";position:absolute;right:24px;top:-6px;font-family:"Cormorant Garamond";font-size:120px;color:var(--lime);line-height:1}
+.rev p{font-size:15.5px;margin:14px 0 24px}
+.who{display:flex;align-items:center;gap:12px}
+.ava{width:46px;height:46px;border-radius:50%;background:var(--g7);color:var(--lime);display:grid;place-items:center;font-weight:700}
+.who small{display:block;color:var(--mut);font-size:12.5px}
+/* reserve */
+.reserve{padding:120px 0}
+.res-card{background:var(--g8);border-radius:32px;display:grid;grid-template-columns:1fr 1.1fr;overflow:hidden;color:#fff}
+.res-img{position:relative;min-height:420px}
+.res-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.res-img:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 50%,var(--g8))}
+.res-body{padding:60px 56px}
+.res-body h2{font-size:clamp(34px,4vw,50px);margin:12px 0 14px}
+.res-body>p{color:rgba(255,255,255,.7);margin-bottom:28px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fld{position:relative}
+.fld input,.fld select{width:100%;padding:20px 16px 8px;border-radius:14px;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.14);color:#fff;font:500 15px Manrope;outline:none;transition:.3s;color-scheme:dark}
+.fld select option{color:#000}
+.fld label{position:absolute;left:17px;top:6px;font-size:11px;color:var(--lime);letter-spacing:.06em;text-transform:uppercase}
+.fld input:focus,.fld select:focus{border-color:var(--lime);background:rgba(255,255,255,.1)}
+form .btn{grid-column:1/-1;justify-content:center;margin-top:6px}
+.checks{display:flex;gap:20px;flex-wrap:wrap;margin-top:20px;font-size:13px;color:rgba(255,255,255,.7)}
+.checks span:before{content:"✓";color:var(--lime);margin-right:6px}
+/* stats */
+.stats{padding:0 0 110px}
+.st-grid{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
+.st b{font-family:"Cormorant Garamond",serif;font-size:62px;color:var(--g7);line-height:1}
+.st span{display:block;color:var(--mut);font-size:14px;margin-top:6px}
+/* contacts */
+.contacts{display:grid;grid-template-columns:1fr 1.3fr;min-height:480px}
+.c-info{background:var(--g9);color:#fff;padding:70px max(16px,calc((100vw - 1200px)/2))}
+.c-info h2{font-size:48px;margin:12px 0 30px}
+.c-row{display:flex;gap:14px;margin-bottom:22px}
+.c-row svg{width:22px;height:22px;color:var(--lime);flex:none;margin-top:3px}
+.c-row a:hover{color:var(--lime)}
+.hours{display:grid;grid-template-columns:auto auto;gap:4px 24px;font-size:14.5px;color:rgba(255,255,255,.75)}
+.hours .today{color:var(--lime);font-weight:700}
+.open-now{display:inline-flex;align-items:center;gap:8px;font-size:13px;padding:6px 14px;border-radius:99px;background:rgba(255,255,255,.08);margin-bottom:12px}
+.open-now i{width:8px;height:8px;border-radius:50%;background:#e06a4a}
+.open-now.yes i{background:#7ed36b;box-shadow:0 0 0 0 #7ed36b;animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px transparent}}
+.contacts iframe{width:100%;height:100%;border:0;filter:grayscale(.3) contrast(1.05)}
+footer{background:#0b1c12;color:rgba(255,255,255,.55);padding:34px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.to-top{position:fixed;right:20px;bottom:20px;width:52px;height:52px;border-radius:50%;background:var(--lime);color:var(--g9);display:grid;place-items:center;z-index:40;transform:scale(0);transition:.4s var(--ease);box-shadow:0 10px 25px -8px rgba(0,0,0,.4)}
+.to-top.on{transform:scale(1)}
+/* responsive */
+@media (max-width:980px){
+ .links{position:fixed;inset:0;background:var(--g9);flex-direction:column;align-items:center;justify-content:center;gap:26px;clip-path:circle(0 at calc(100% - 36px) 36px);transition:clip-path .7s var(--ease)}
+ .links a{font-family:"Cormorant Garamond";font-size:34px}
+ .open .links{clip-path:circle(150% at calc(100% - 36px) 36px)}
+ .burger{display:block;z-index:2}.nav>.btn{display:none}
+ .hero-grid,.about-grid,.sig-row,.res-card,.contacts{grid-template-columns:1fr}
+ .hero-art{justify-self:center;max-width:440px;margin-top:20px}
+ .feat-grid{grid-template-columns:repeat(2,1fr);gap:30px 0}.feat:nth-child(2n){border:0}
+ .sig-row.rev .sig-img{order:0}.menu-list{grid-template-columns:1fr}
+ .g-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}.g-grid figure:nth-child(5){grid-column:span 2}
+ .rev-grid{grid-template-columns:1fr}.st-grid{grid-template-columns:repeat(2,1fr);gap:36px 0}
+ .res-img{min-height:240px}.res-img:after{background:linear-gradient(180deg,transparent 40%,var(--g8))}
+ .res-body{padding:36px 22px}.contacts iframe{min-height:380px}
+ .about-pics{height:440px}#glow{display:none}
+}
+@media (max-width:560px){form{grid-template-columns:1fr}.feat-grid{grid-template-columns:1fr 1fr}.feat{padding:8px}.hero-meta{gap:22px}.badge.b1{left:0}.badge.b2{right:0}.sig-num{font-size:80px}}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.rv,.fade,.line-mask>span{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="pre"><div><div class="script">Поселенцы</div><div class="bar"><i></i></div></div></div>
+<div id="glow"></div>
+
+<header id="hdr">
+ <div class="wrap nav">
+  <a href="#top" class="logo"><b>Поселенцы</b><small>УРАЛЬСКАЯ КУХНЯ</small></a>
+  <nav class="links" id="links">
+   <a href="#about">О нас</a><a href="#signature">Фирменное</a><a href="#menu">Меню</a><a href="#gallery">Галерея</a><a href="#reviews">Отзывы</a><a href="#contacts">Контакты</a>
+  </nav>
+  <a href="#reserve" class="btn btn-lime">Забронировать</a>
+  <button class="burger" id="burger" aria-label="Меню"><i></i><i></i><i></i></button>
+ </div>
+</header>
+
+<section class="hero" id="top">
+ <div class="wrap hero-grid">
+  <div>
+   <div class="script fade d1">Еда Урала, душа предков</div>
+   <h1>
+    <span class="line-mask"><span>Вкус, который</span></span>
+    <span class="line-mask"><span>помнит землю</span></span>
+    <span class="line-mask"><span class="script">Урала</span></span>
+   </h1>
+   <p class="lead fade d2">Аутентичная русская кухня с неожиданными сочетаниями: ляпуны из печи, грузди уральских лесов, сиг под ржаным квасом. Своя пекарня и зал в духе древних поселений.</p>
+   <div class="hero-btns fade d3">
+    <a href="#menu" class="btn btn-lime">Смотреть меню <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a href="#reserve" class="btn btn-line">Забронировать стол</a>
+   </div>
+   <div class="hero-meta fade d3">
+    <div><b data-count="5.0">5.0</b><span>рейтинг · 178 оценок</span></div>
+    <div><b data-count="40">40+</b><span>блюд уральской кухни</span></div>
+    <div><b>500–1200 ₽</b><span>средний чек</span></div>
+   </div>
+  </div>
+  <div class="hero-art" id="heroArt">
+   <div class="blob"></div>
+   <div class="plate"><img src="img/35_L.webp" alt="Фирменное блюдо Поселенцев"></div>
+   <div class="badge b1"><b>★ 5.0</b><span>Любимое место<br>горожан</span></div>
+   <div class="badge b2"><b>🔥</b><span>Ляпуны<br>из печи</span></div>
+   <svg class="leaf" style="left:2%;top:4%" viewBox="0 0 64 64"><path d="M8 56C8 26 28 8 58 6c-2 30-20 50-50 50z" fill="#7a9a4a"/><path d="M8 56L46 18" stroke="#c9d88a" stroke-width="2"/></svg>
+  </div>
+ </div>
+ <a href="#marq" class="scroll-hint" aria-label="Листать"></a>
+</section>
+
+<div class="marquee" id="marq"><div class="marquee-track" id="mq"></div></div>
+
+<section class="features">
+ <div class="wrap feat-grid">
+  <div class="feat rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 21c0-9 5-15 15-17-1 10-7 16-15 17zM5 21l8-8"/></svg></div><h3>Фермерские продукты</h3><p>Сыр, сало и мясо от местных фермеров</p></div>
+  <div class="feat rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 14c0-5 4-8 8-8s8 3 8 8v5H4zM8 6V4M12 6V3M16 6V4"/></svg></div><h3>Своя пекарня</h3><p>Ляпуны на закваске и пирожки каждый день</p></div>
+  <div class="feat rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c2 4 6 5 6 10a6 6 0 01-12 0c0-3 2-4 2-7 2 1 3 3 4 4 0-3-1-5 0-7z"/></svg></div><h3>Печь и костёр</h3><p>Копчение, томление, картофель с костра</p></div>
+  <div class="feat rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20h16M6 20V9l6-5 6 5v11M10 20v-6h4v6"/></svg></div><h3>Атмосфера древности</h3><p>Наскальная живопись и истуканы</p></div>
+  <div class="feat rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.5-7 10-7 10z"/></svg></div><h3>Для всей семьи</h3><p>Детское меню для маленьких поселенцев</p></div>
+ </div>
+</section>
+
+<section class="about" id="about">
+ <div class="wrap about-grid">
+  <div class="about-pics rv rv-l">
+   <svg class="stamp" viewBox="0 0 130 130"><defs><path id="c" d="M65 65m-50 0a50 50 0 1 1 100 0a50 50 0 1 1-100 0"/></defs><text><textPath href="#c">• ЕДА УРАЛА • СВОЯ ПЕКАРНЯ • С ДУШОЙ </textPath></text><text x="65" y="74" text-anchor="middle" style="font-size:26px;letter-spacing:0">ᛟ</text></svg>
+   <figure class="p1"><img src="img/4_L_height.webp" alt="Блюдо ресторана" loading="lazy"></figure>
+   <figure class="p2"><img src="img/3_L_height.webp" alt="Сэт намазок" loading="lazy"></figure>
+  </div>
+  <div class="rv rv-r">
+   <span class="eyebrow">О ресторане</span>
+   <h2>Там, где начиналась <em>уральская</em> кухня</h2>
+   <p>«Поселенцы» — ресторан аутентичной русской кухни, который удивляет необычными сочетаниями вкусов. Мы берём рецепты уральских казаков и старых деревень и рассказываем их современным языком.</p>
+   <p>Интерьер выполнен в стиле языческой древности: наскальная живопись, деревянные истуканы, природный декор. Фоновая лаунж-музыка, всего 12 столов: камерно и уютно.</p>
+   <div class="chips"><span>Сезонное меню</span><span>Wi‑Fi</span><span>Кофе с собой</span><span>Оплата картой и СБП</span><span>Пиво от 350 ₽</span></div>
+   <a href="#signature" class="btn btn-dark">Наши фирменные блюда <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+ </div>
+</section>
+
+<section class="sig" id="signature">
+ <div class="wrap">
+  <div class="sec-head rv"><span class="eyebrow">Гордость кухни</span><h2>Фирменное от Поселенцев</h2></div>
+  <div class="sig-row">
+   <div class="sig-img rv rv-s"><img src="img/35_L.webp" alt="Ляпун" data-par loading="lazy"></div>
+   <div class="rv rv-r">
+    <div class="sig-num">01</div>
+    <h3>Ляпун из печи</h3>
+    <p>Лепёшка на закваске из нашей пекарни: сверху начинка, и всё запекается в печи. С красной икрой и топлёной сметаной, с говядиной и квашеной капустой, с ягнёнком.</p>
+    <div class="price">от 450 ₽</div>
+   </div>
+  </div>
+  <div class="sig-row rev">
+   <div class="sig-img rv rv-s"><img src="img/3_L_height.webp" alt="Сэт намазок" data-par loading="lazy"></div>
+   <div class="rv rv-l">
+    <div class="sig-num">02</div>
+    <h3>Сэт намазок</h3>
+    <p>Намазка из рыбы, икра кабачковая, морковный крем, паштет из говядины и луковая намазка. Лучший способ начать знакомство с Уралом.</p>
+    <div class="price">750 ₽</div>
+   </div>
+  </div>
+  <div class="sig-row">
+   <div class="sig-img rv rv-s"><img src="img/5_L_height.webp" alt="Блюдо ресторана" data-par loading="lazy"></div>
+   <div class="rv rv-r">
+    <div class="sig-num">03</div>
+    <h3>Фермерская телячья шея</h3>
+    <p>Томлёная до нежности шея с ломтём капусты и грибным соусом. Блюдо, ради которого к нам возвращаются.</p>
+    <div class="price">770 ₽</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="menu" id="menu">
+ <div class="wrap">
+  <div class="sec-head rv"><span class="eyebrow">Наше меню</span><h2>Попробуйте Урал на вкус</h2></div>
+  <div class="tabs rv" id="tabs"></div>
+  <div class="menu-list" id="mlist"></div>
+  <div class="menu-cta"><a href="#reserve" class="btn btn-dark">Забронировать стол <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+ </div>
+</section>
+
+<section class="gallery" id="gallery">
+ <div class="wrap">
+  <div class="sec-head rv"><span class="eyebrow">Галерея</span><h2>Атмосфера и вкус</h2></div>
+  <div class="g-grid" id="gal">
+   <figure class="rv"><img src="img/36_L.webp" alt="Фото ресторана" loading="lazy"></figure>
+   <figure class="rv"><img src="img/3_L_height.webp" alt="Фото ресторана" loading="lazy"></figure>
+   <figure class="rv"><img src="img/6_S_height.webp" alt="Фото ресторана" loading="lazy"></figure>
+   <figure class="rv"><img src="img/4_L_height.webp" alt="Фото ресторана" loading="lazy"></figure>
+   <figure class="rv"><img src="img/35_L.webp" alt="Фото ресторана" loading="lazy"></figure>
+   <figure class="rv"><img src="img/5_L_height.webp" alt="Фото ресторана" loading="lazy"></figure>
+  </div>
+ </div>
+</section>
+<div id="lb"><img alt=""></div>
+
+<section class="reviews" id="reviews">
+ <div class="wrap">
+  <div class="sec-head rv"><span class="eyebrow">Отзывы гостей</span><h2>Нас любят и советуют</h2>
+   <div class="rating"><b>5,0</b><div><div class="stars">★★★★★</div><small>178 оценок · 123 отзыва</small></div></div>
+  </div>
+  <div class="rev-grid">
+   <div class="rev rv"><div class="stars">★★★★★</div><p>Отличное место! Ходили туда с дочерью отмечать мой День Рождения и обе остались очень довольны! Потрясающая атмосфера…</p><div class="who"><div class="ava">А</div><div><b>Alyona Z.</b><small>Знаток города · 18 августа</small></div></div></div>
+   <div class="rev rv"><div class="stars">★★★★★</div><p>Ленивым субботним утром захотелось нам пообедать, и мы вспомнили о том, что нам рекомендовали это заведение…</p><div class="who"><div class="ava">Е</div><div><b>Евгений Симонов</b><small>Дегустатор · 7 сентября</small></div></div></div>
+   <div class="rev rv"><div class="stars">★★★★★</div><p>В рабочей командировке в Челябинске друзья и коллеги решили познакомить меня с местной кухней…</p><div class="who"><div class="ava">А</div><div><b>Альфия Курамшина</b><small>Дегустатор · 24 июня</small></div></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="reserve" id="reserve">
+ <div class="wrap">
+  <div class="res-card rv rv-s">
+   <div class="res-img"><img src="img/36_L.webp" alt="" loading="lazy"></div>
+   <div class="res-body">
+    <span class="eyebrow">Бронирование</span>
+    <h2>Хорошей еде — хороший стол</h2>
+    <p>В зале всего 12 столов, поэтому лучше бронировать заранее, особенно в пятницу и субботу.</p>
+    <form id="bf">
+     <div class="fld"><label>Имя</label><input name="n" required></div>
+     <div class="fld"><label>Телефон</label><input name="p" type="tel" required></div>
+     <div class="fld"><label>Дата</label><input name="d" type="date" required></div>
+     <div class="fld"><label>Время</label><input name="t" type="time" min="12:00" value="19:00" required></div>
+     <div class="fld" style="grid-column:1/-1"><label>Гостей</label><select name="g"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5–6</option><option>7+</option></select></div>
+     <button class="btn btn-lime">Отправить в WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </form>
+    <div class="checks"><span>Без предоплаты</span><span>Ответим быстро</span><span>Или звоните: <a href="tel:+79087031796">+7 908 703-17-96</a></span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="stats">
+ <div class="wrap st-grid">
+  <div class="st rv"><b data-n="5">0</b><span>рейтинг из 5</span></div>
+  <div class="st rv"><b data-n="178">0</b><span>оценок гостей</span></div>
+  <div class="st rv"><b data-n="40">0</b><span>блюд в меню</span></div>
+  <div class="st rv"><b data-n="12">0</b><span>уютных столов</span></div>
+ </div>
+</section>
+
+<section class="contacts" id="contacts">
+ <div class="c-info">
+  <span class="eyebrow">Контакты</span>
+  <h2>Ждём в гости</h2>
+  <div class="c-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div>Челябинск, проспект Ленина, 51</div></div>
+  <div class="c-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg><a href="tel:+79087031796">+7 (908) 703-17-96</a></div>
+  <div class="c-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+   <div><div class="open-now" id="openNow"><i></i><span></span></div><div class="hours" id="hours"></div></div></div>
+ </div>
+ <iframe src="https://yandex.ru/map-widget/v1/?text=%D0%A7%D0%B5%D0%BB%D1%8F%D0%B1%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9B%D0%B5%D0%BD%D0%B8%D0%BD%D0%B0%2C%2051&z=16" title="Карта" loading="lazy"></iframe>
+</section>
+
+<footer><div class="wrap"><a href="#top" class="logo"><b style="font-size:24px">Поселенцы</b></a><span>© 2026 Ресторан «Поселенцы» · Челябинск</span><a href="tel:+79087031796">+7 (908) 703-17-96</a></div></footer>
+<a href="#top" class="to-top" id="toTop" aria-label="Наверх">↑</a>
+
+<script>
+const M={"Закуски":[["Уральские грузди с топлёной сметаной","Хрустящие грузди с уральских лесов",590],["Сэт намазок","Рыбная намазка, кабачковая икра, морковный крем, паштет из говядины, луковая намазка",750],["Фермерское сало","Домашнего копчения и солёное, с ржаной булочкой",590],["Соленья домашние","Маринованные овощи по-уральски",590],["Ремесленный сыр от местных фермеров","Ассортимент уточняйте у официанта · 240 г",990],["Мясной набор Поселенца","180 г",790],["Маринованное филе сига","С мороженым из хрена и соусом из трав",590]],
+"Салаты":[["Салат со свёклой","С вяленой свёклой",460],["Салат с ягнёнком","Салат с дичью",790],["Салат с индейкой","Печёная индейка, картофель с костра, соус из квашеной капусты",560],["Винегрет с уральскими груздями","Классика с лесными груздями",480],["Уралье с мясом раков","Наш ответ оливье",690]],
+"Горячие закуски":[["Ватрушка с грибами в сметане","Уральский вкус в одной ватрушке",420],["Мозговые косточки","С тёплым хлебом и овощным крошевом",750],["Пирог с подкопчённой уткой","С муссом из сельдерея · 260 г",790],["Блины с говядиной и белыми грибами","Домашние блины с рваной говядиной · 200 г",490]],
+"Ляпуны":[["Ляпун с красной икрой","С топлёной сметаной. Лепёшка на закваске, запечённая в печи",999],["Ляпун с индейкой","Луковый крем и крошево из огурца",450],["Ляпун с говядиной","Луковый крем и квашеная капуста",490],["Ляпун с ягнёнком","С рагу из баклажанов",560]],
+"Пельмени":[["Пельмени Таёжные","Вареники с картофелем и грибным соусом",490],["Уральские пельмени с косулей","С овощным рагу и топлёной сметаной",660],["Пельмени Таганайские","Индейка, говядина, квашеная капуста в перечном соусе",560],["Вареники с мясом раков","С картофелем и красной икрой",720]],
+"Горячее":[["Фермерская телячья шея","С ломтём капусты и грибным соусом",770],["Котлета с картофельным пюре","С муссом из лесных грибов",690],["Телячья печень","С перечным соусом, пюре и вареньем из лука",580],["Филе судака в квасной глазури","С нежной цветной капустой",670],["Подкопчённый сиг","Глазированный ржаным квасом, с картофелем из костра",790],["Котлета из щуки","С толчёным картофелем и маринованным редисом",580],["Казачье жаркое","Три вида мяса с печёным картофелем",890],["Томлёные почки кролика","В мясном соусе с кремом из сельдерея",780],["Подкопчённые ножки цыплёнка","С разносолами и брусникой",770]],
+"Супы":[["Уха","Судак, форель, картофель и красная икра",590],["Губница из лесных грибов","Суп с лесными грибами и шампиньонами",550],["Уральский борщ с говядиной","С салом, маринованным редисом и капустным пирожком",660]],
+"Детям и выпечка":[["Запечённый бутерброд с ветчиной и сыром","На основе ляпуна",340],["Котлетка из говядины с пюре","Классическое сочетание",360],["Овощной салат с индейкой","Для маленьких поселенцев",260],["Хлебная корзина","Белая и ржаная булочки, пирожки с капустой и картофелем",350]]};
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+// tabs + menu
+const tabs=$('#tabs'),ml=$('#mlist');
+Object.keys(M).forEach((k,i)=>{const b=document.createElement('button');b.className='tab'+(i?'':' on');b.textContent=k;b.onclick=()=>{$$('.tab').forEach(t=>t.classList.remove('on'));b.classList.add('on');show(k)};tabs.append(b)});
+function show(k){ml.innerHTML=M[k].map((d,i)=>`<div class="dish" style="animation-delay:${i*.06}s"><h4>${d[0]}</h4><span class="pr">${d[2]} ₽</span><p>${d[1]}</p></div>`).join('')}
+show('Закуски');
+// marquee
+const words=['Ляпуны из печи','с душой','Уральские пельмени','своя пекарня','Сиг под ржаным квасом','по-казачьи','Грузди с топлёной сметаной','с костра'];
+$('#mq').innerHTML=[...words,...words].map(w=>`<span>${w} ✦</span>`).join('');
+// preloader
+addEventListener('load',()=>setTimeout(()=>{$('#pre').classList.add('done');document.body.classList.add('loaded')},900));
+setTimeout(()=>{$('#pre').classList.add('done');document.body.classList.add('loaded')},3500);
+// reveal + counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;const sib=[...el.parentElement.children].filter(c=>c.classList.contains('rv'));el.style.transitionDelay=Math.max(0,sib.indexOf(el))*.1+'s';el.classList.add('in');io.unobserve(el);const n=el.querySelector('[data-n]');if(n)count(n)}),{threshold:.15});
+$$('.rv').forEach(e=>io.observe(e));
+function count(el){const to=+el.dataset.n,t0=performance.now();(function f(t){const p=Math.min((t-t0)/1600,1),v=to*(1-Math.pow(1-p,3));el.textContent=to===5?v.toFixed(1):Math.round(v)+(to===40?'+':'');if(p<1)requestAnimationFrame(f)})(t0)}
+// header, parallax, to-top
+const hdr=$('#hdr'),art=$('#heroArt'),par=$$('[data-par]');
+addEventListener('scroll',()=>{const y=scrollY;hdr.classList.toggle('solid',y>40);$('#toTop').classList.toggle('on',y>700);
+ if(y<innerHeight)art.style.transform=`translateY(${y*.15}px)`;
+ par.forEach(i=>{const r=i.parentElement.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)i.style.transform=`translateY(${(r.top-innerHeight/2)*-.12-60}px)`});
+ let cur='';$$('section[id]').forEach(s=>{if(s.offsetTop-120<=y)cur=s.id});$$('.links a').forEach(a=>a.classList.toggle('on',a.hash==='#'+cur));
+},{passive:true});
+// cursor glow + hero tilt
+const g=$('#glow');addEventListener('mousemove',e=>{g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'});
+$('.hero').addEventListener('mousemove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;$('.plate').style.transform=`rotateY(${x*10}deg) rotateX(${-y*10}deg)`});
+// burger
+$('#burger').onclick=()=>hdr.classList.toggle('open');$$('.links a').forEach(a=>a.onclick=()=>hdr.classList.remove('open'));
+// lightbox
+const lb=$('#lb');$$('#gal img').forEach(i=>i.parentElement.onclick=()=>{lb.querySelector('img').src=i.src;lb.classList.add('on')});lb.onclick=()=>lb.classList.remove('on');
+// hours
+const H=[['Пн','12:00–23:00'],['Вт','12:00–23:00'],['Ср','12:00–23:00'],['Чт','12:00–23:00'],['Пт','12:00–00:00'],['Сб','12:00–00:00'],['Вс','12:00–23:00']];
+const now=new Date(),di=(now.getDay()+6)%7;$('#hours').innerHTML=H.map((h,i)=>`<span class="${i===di?'today':''}">${h[0]}</span><span class="${i===di?'today':''}">${h[1]}</span>`).join('');
+const hr=now.getHours(),close=di>=4&&di<=5?24:23,op=hr>=12&&hr<close;$('#openNow').classList.toggle('yes',op);$('#openNow span').textContent=op?'Сейчас открыто':'Сейчас закрыто · откроемся в 12:00';
+// booking -> WhatsApp
+$('#bf').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);const msg=`Здравствуйте! Хочу забронировать стол.\nИмя: ${f.get('n')}\nТелефон: ${f.get('p')}\nДата: ${f.get('d')} в ${f.get('t')}\nГостей: ${f.get('g')}`;open('https://wa.me/79087031796?text='+encodeURIComponent(msg),'_blank')};
+$('#bf [name=d]').min=now.toISOString().slice(0,10);
+</script>
+</body>
+</html>
